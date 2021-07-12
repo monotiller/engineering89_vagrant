@@ -1,4 +1,5 @@
-# Settimg up development environemnt
+# Setting up development environemnt
+![](images/virtualisation.png)
 ## Installation of Vagrant, Virtual box and Ruby
 ### Vagrant Commands
 - `vagrant up` to launch the VM
