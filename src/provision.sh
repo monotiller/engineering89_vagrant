@@ -13,3 +13,19 @@ sudo apt-get install nginx -y
 # Cheking status of nginx installation
 systemctl status nginx
 # We technically don't need to keep this in, but it's nice to see at least
+
+# Installs node.js
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt install nodejs -y
+node --version
+
+# Installs the other dependencies
+sudo apt-get install -y software-properties-common
+sudo apt-get install -y python-software-properties
+
+# Installs pm2 globally
+sudo npm install pm2 -y -g
+
+# Runs the sparta test program
+cd sync/app
+node app.js
