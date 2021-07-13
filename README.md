@@ -29,3 +29,31 @@
 3. Reload vagrant
 4. `vagrant ssh`
 5. `nginx status active` should load nginx in the browser
+
+## Automation of installation
+- Create a file calleed `provision.sh`
+- `sudo apt-get update -y`
+- `sudo apt-get upgrade -y`
+- `sudo apt-get install nginx`
+- `systemctl status nginx`
+
+To run `provision.sh` we neeed to give the file permission and make this file executable. To change permission we euse `chmod` with required permission then file name
+- `chmod -x`
+
+Here is our provisions.sh file:
+```bash
+#!/bin/bash
+
+# Let's automate all the steps from our morning session
+# Updating our VM
+sudo apt-get update -y
+
+# Upgrading our VM
+sudo apt-get upgrade -y
+
+# Installing nginx
+sudo apt-get install nginx -y
+
+# Cheking status of nginx installation
+systemctl status nginx
+```
