@@ -26,6 +26,9 @@ sudo apt-get install -y python-software-properties
 # Installs pm2 globally
 sudo npm install pm2 -y -g
 
+# Creates a variable for MongoDB
+export DB_HOST = mongodb
+
 # Runs the sparta test program
 cd sync/app
 node app.js
