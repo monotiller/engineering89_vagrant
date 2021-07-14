@@ -27,7 +27,7 @@ sudo apt-get install -y python-software-properties
 sudo npm install pm2 -y -g
 
 # Creates a variable for MongoDB
-export DB_HOST = mongodb
+sudo echo 'export DB_HOST=mongodb' >> .profile
 
 # Runs the sparta test program
 cd sync/app
