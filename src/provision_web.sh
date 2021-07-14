@@ -30,5 +30,6 @@ sudo npm install pm2 -y -g
 sudo echo 'export DB_HOST=mongodb' >> .profile
 
 # Runs the sparta test program
-cd sync/app
-node app.js
+# cd sync/app
+# npm install -y
+# node app.js

@@ -40,20 +40,37 @@
 To run `provision.sh` we neeed to give the file permission and make this file executable. To change permission we euse `chmod` with required permission then file name
 - `chmod -x`
 
-Here is our provisions.sh file:
-```bash
-#!/bin/bash
+Check out the `provision.sh` file to check out the changes so far, it's changed a few times since it was first written!
 
-# Let's automate all the steps from our morning session
-# Updating our VM
-sudo apt-get update -y
+## Changing the port to run the apps without the need for entering it in every time
+In the folder `/etc/nginx/sites-available` there is a file called `default`. In here is where we want to put the configuration for the ports and addresses to listen on!
 
-# Upgrading our VM
-sudo apt-get upgrade -y
+```nginx
+server {
+    listen 80;
 
-# Installing nginx
-sudo apt-get install nginx -y
+    server_name _;
 
-# Cheking status of nginx installation
-systemctl status nginx
+    location / {
+        proxy_pass http://192.168.10.100:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
 ```
+After doing this we may enter in: `sudo nginx -t` to test the above configuration file. If we get this message:
+```conosle
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+```
+Then everything is ok!
+
+## MongoDB
+- Create another VM called DB and install MongoDB in it
+- Then create an env variable called `DB_HOST:db_ip:27017` inside app vm to connect to db
+- http://192.168.10.100/posts
+
+[Multi-Machine](https://www.vagrantup.com/docs/multi-machine)
