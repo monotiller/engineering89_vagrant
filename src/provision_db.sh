@@ -32,6 +32,3 @@ sudo systemctl daemon-reload
 sudo mongodb
 sudo systemctl start mongod
 sudo systemctl status mongod
-
-# Creates a variable for MongoDB
-sudo echo 'export DB_HOST=db_ip:27017' >> .profile
