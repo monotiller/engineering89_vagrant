@@ -70,7 +70,16 @@ Then everything is ok!
 
 ## MongoDB
 - Create another VM called DB and install MongoDB in it
-- Then create an env variable called `DB_HOST:db_ip:27017` inside app vm to connect to db
+- Then create an env variable called `export DB_HOST=mongodb://192.168.10.150:27017/posts >> ~/.bashrc` inside web vm to connect to db
 - http://192.168.10.100/posts
 
 [Multi-Machine](https://www.vagrantup.com/docs/multi-machine)
+
+- After starting both VMs you will need to SSH into the `db` VM. Then do: `sudo nano /etc/mongod.conf` and change the ip to `0.0.0.0`.
+- Then run `sudo systemctl restart mongod` to restart MongoDB
+- Then run `sudo systemctl enable mongod` to enable the service
+- Finally run `sudo systemctl status mongod` to check it's running!
+
+Then move back to the `web` VM
+- Move to the app folder
+- `npm start`
