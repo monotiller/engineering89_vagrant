@@ -26,7 +26,7 @@ cd /etc/nginx/sites-available
 sudo rm -rf default
 sudo echo "
 server {
-    listen 80;
+    listen 3000;
 
     server_name _;
 
