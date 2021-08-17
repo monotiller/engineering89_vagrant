@@ -52,4 +52,4 @@ cd sync/app/
 sudo npm install
 sudo systemctl restart nginx
 node seeds/seed.js
-node app.js
+pm2 start app.js
